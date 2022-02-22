@@ -1,0 +1,39 @@
+@model IEnumerable<moment32.Models.Artist>
+
+@{
+    ViewData["Title"] = "Artister";
+}
+
+<h1>Artister</h1>
+
+<p class="btn">
+    <a asp-action="Create">Lägg till ny artist</a>
+</p>
+
+<section>
+    <h2>Alla artister</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ArtistName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArtistName)
+                </td>
+                <td>
+                    <a class="btn" asp-action="Edit" asp-route-id="@item.ArtistId">Redigera</a> 
+                    <a class="btn" asp-action="Details" asp-route-id="@item.ArtistId">Detaljer</a> 
+                    <a class="btn" asp-action="Delete" asp-route-id="@item.ArtistId">Ta bort</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</section>

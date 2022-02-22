@@ -1,0 +1,31 @@
+@model moment32.Models.Record
+
+@{
+    ViewData["Title"] = "Detaljer";
+}
+
+<h1>Detaljer</h1>
+
+<section>
+    <h2>Skiva</h2>
+    <hr />
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.RecordName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RecordName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Artist)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Artist.ArtistName)
+        </dd>
+    </dl>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.RecordId" class="btn" >Redigera</a> |
+        <a asp-action="Index">Till alla skivor</a>
+    </div>
+</section>

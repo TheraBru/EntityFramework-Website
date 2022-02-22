@@ -1,0 +1,32 @@
+@model moment32.Models.Song
+
+@{
+    ViewData["Title"] = "Detaljer";
+}
+
+<h1>Detaljer</h1>
+<section>
+    <div>
+        <h2>Låt</h2>
+        <hr />
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.SongName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SongName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Record)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Record.RecordName)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.SongId" class="btn">Redigera</a> |
+        <a asp-action="Index">Till alla låtar</a>
+    </div>
+</section>
+

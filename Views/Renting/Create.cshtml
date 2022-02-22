@@ -1,0 +1,44 @@
+@model moment32.Models.Renting
+
+@{
+    ViewData["Title"] = "Skapa ny uthyrning";
+}
+
+<h1>Skapa ny uthyrning</h1>
+<section>
+    <h2>Uthyrning</h2>
+    <hr />
+    <div>
+        <div>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="errorMsg"></div>
+                <span class="errorMsg">@ViewData["ErrorMsg"]</span>
+                <div>
+                    <label asp-for="Rented"></label>
+                    <input asp-for="Rented"/>
+                    <span asp-validation-for="Rented" class="errorMsg"></span>
+                </div>
+                <div>
+                    <label asp-for="RecordId"></label>
+                    <select asp-for="RecordId" asp-items="ViewBag.RecordId"></select>
+                </div>
+                <div>
+                    <label asp-for="UserId" ></label>
+                    <select asp-for="UserId" asp-items="ViewBag.UserId"></select>
+                </div>
+                <div>
+                    <input type="submit" value="Create" class="btn" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Till alla uthyrningar</a>
+    </div>
+</section>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

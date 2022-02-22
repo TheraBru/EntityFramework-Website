@@ -1,0 +1,34 @@
+@model moment32.Models.Song
+
+@{
+    ViewData["Title"] = "Ta bort låt";
+}
+
+<h1>Ta bort låt</h1>
+<section>
+    <div>
+        <h2>Låt</h2>
+        <hr />
+        <dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.SongName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.SongName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Record)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Record.RecordId)
+            </dd>
+        </dl>
+        
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="SongId" />
+            <input type="submit" value="Ta bort" class="btn"/>
+        </form>
+        <a asp-action="Index">Till alla låtar</a>
+    </div>
+</section>
+

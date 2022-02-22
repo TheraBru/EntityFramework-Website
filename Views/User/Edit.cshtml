@@ -1,0 +1,38 @@
+@model moment32.Models.User
+
+@{
+    ViewData["Title"] = "Redigera användare";
+}
+
+<h1>Redigera användare</h1>
+
+<section>
+    <h2>Användare</h2>
+    <hr />
+    <div >
+        <div>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="errorMsg"></div>
+                <input type="hidden" asp-for="UserId" />
+                <div>
+                    <label asp-for="UserName" ></label>
+                    <input asp-for="UserName"/>
+                    <span asp-validation-for="UserName" class="errorMsg"></span>
+                </div>
+                <div>
+                    <input type="submit" value="Spara ändringar" class="btn" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Till alla användare</a>
+    </div>
+</section>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

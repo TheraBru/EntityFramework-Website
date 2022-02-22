@@ -1,0 +1,26 @@
+@model moment32.Models.User
+
+@{
+    ViewData["Title"] = "Ta bort användare";
+}
+
+<h1>Ta bort användare</h1>
+
+<section>
+    <h2>Användare</h2>
+    <hr />
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="UserId" />
+        <input type="submit" value="Ta bort" class="btn" /> 
+    </form>
+    <a asp-action="Index">Till alla användare</a>
+</section>

@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Sök";
+}
+@* View for sökresultatet *@
+
+<h1>Sökresultat</h1>
+<p>Din sökning på @ViewBag.Search gav följande resultat</p>
+@if(ViewBag.Records.Count> 0){
+    <section>
+            <h2>Album</h2>
+            @foreach (var Record in ViewBag.Records){
+                <article>
+                    <h3>@Record.RecordName</h3>
+                    <div class="btn-div">
+                        <div class="btn">
+                            <a asp-area="" asp-controller="Record" asp-action="Details" asp-route-id="@Record.RecordId">Se Album</a>
+                        </div>
+                    </div>
+                </article>
+            }
+    </section>
+}
+<section>
+    @if(ViewBag.Artists.Count > 0 ){
+    <h2>Artister</h2>
+        @foreach (var Artist in ViewBag.Artists){
+            <article>
+                <h3>@Artist.ArtistName</h3>
+                <div class="btn-div">
+                    <div class="btn">
+                        <a asp-area="" asp-controller="Artist" asp-action="Details" asp-route-id="@Artist.ArtistId">Se Artist</a>
+                    </div>
+                </div>
+            </article>
+        }
+    }
+
+</section>

@@ -1,0 +1,45 @@
+@model IEnumerable<moment32.Models.Song>
+
+@{
+    ViewData["Title"] = "Låtar";
+}
+
+<h1>Låtar</h1>
+<p>
+    <a class="btn" asp-action="Create">Lägg till ny låt</a>
+</p>
+<section>
+    <h2>Alla låtar</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SongName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Record)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SongName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record.RecordName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SongId" class="btn">Redigera</a>
+                    <a asp-action="Details" asp-route-id="@item.SongId" class="btn">Detaljer</a>
+                    <a asp-action="Delete" asp-route-id="@item.SongId" class="btn">Ta bort</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</section>
+
+

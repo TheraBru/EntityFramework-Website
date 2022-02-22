@@ -1,0 +1,39 @@
+@model moment32.Models.Record
+
+@{
+    ViewData["Title"] = "Lägg till ny skiva";
+}
+
+<h1>Lägg till ny skiva</h1>
+<section>
+    <h2>Skiva</h2>
+    <hr />
+    <div>
+        <div>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="errorMsg"></div>
+                <div>
+                    <label asp-for="RecordName"></label>
+                    <input asp-for="RecordName"/>
+                    <span asp-validation-for="RecordName" class="errorMsg"></span>
+                </div>
+                <div>
+                    <label asp-for="ArtistId"></label>
+                    <select asp-for="ArtistId"  asp-items="ViewBag.ArtistId"></select>
+                </div>
+                <div>
+                    <input type="submit" value="Lägg till" class="btn"/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Till alla skivor</a>
+    </div>
+</section>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

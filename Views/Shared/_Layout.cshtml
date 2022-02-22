@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mina Skivor</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <a class="heading" asp-area="" asp-controller="Home" asp-action="Index">Mina Skivor</a>
+        <nav>
+            <ul>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">Startsida</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Artist" asp-action="Index">Artister</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Record" asp-action="Index">Skivor</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="Song" asp-action="Index">Låtar</a>
+                </li>
+                <li>
+                    <a asp-area="" asp-controller="User" asp-action="Index">Användare</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        <main role="main">
+            <div>
+            @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>
+            Den här sidan är gjord av Therese Bruzell för ett skolarbete
+        </p>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

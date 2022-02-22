@@ -1,0 +1,51 @@
+@model IEnumerable<moment32.Models.Renting>
+
+@{
+    ViewData["Title"] = "Uthyrningar";
+}
+
+<h1>Uthyrningar</h1>
+
+<p>
+    <a class="btn" asp-action="Create">Skapa ny uthyrning</a>
+</p>
+<section class="wide">
+    <h2>Alla uthyrningar</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rented)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Record)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rented)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Record.RecordName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.RentingId" class="btn">Redigera</a>
+                    <a asp-action="Details" asp-route-id="@item.RentingId" class="btn">Detaljer</a>
+                    <a asp-action="Delete" asp-route-id="@item.RentingId" class="btn">Ta bort</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+
+</section>

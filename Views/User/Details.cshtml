@@ -1,0 +1,24 @@
+@model moment32.Models.User
+
+@{
+    ViewData["Title"] = "Detaljer";
+}
+
+<h1>Detaljer</h1>
+
+<section>
+    <h2>Användare</h2>
+    <hr />
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+    </dl>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.UserId" class="btn">Redigera</a> |
+        <a asp-action="Index">Till alla användare</a>
+    </div>
+</section>

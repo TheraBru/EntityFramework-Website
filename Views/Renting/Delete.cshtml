@@ -1,0 +1,38 @@
+@model moment32.Models.Renting
+
+@{
+    ViewData["Title"] = "Avsluta uthyrning";
+}
+
+<h1>Avsluta uthyrning</h1>
+
+<section>
+    <h2>Uthyrning</h2>
+    <hr />
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rented)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rented)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Record)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Record.RecordId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.UserId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RentingId" />
+        <input type="submit" value="Avlsuta uthyrning" class="btn" />
+    </form>
+    <a asp-action="Index">Till alla uthyrningar</a>
+</section>

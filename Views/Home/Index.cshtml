@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Mina skivor";
+}
+@* View för startsidan *@
+
+<h1>Mina skivor</h1>
+<section>
+    <h2 class="startPageHead">Album</h2>
+    <p>Här listas samtliga album med tillhörande låtlista. För att ändra i informationen kan du klicka på knapparna eller använda dig av huvudmenyn i toppen av sidan.</p>
+    @{
+        foreach (var Record in ViewBag.Records)
+        {
+            @for (int i = 0; i < ViewBag.Artists.Count; i++)
+            {
+                @if (ViewBag.Artists[i].ArtistId == Record.ArtistId)
+                {
+                    <article>
+                        <h3>@Record.RecordName - @ViewBag.Artists[i].ArtistName</h3>
+                        <div class="btn-div">
+                            <div class="btn">
+                                <a asp-area="" asp-controller="Record" asp-action="Details" asp-route-id="@Record.RecordId">Redigera
+                                    Album</a>
+                            </div>
+                            <div class="btn">
+                                <a asp-area="" asp-controller="Artist" asp-action="Details"
+                    asp-route-id="@ViewBag.Artists[i].ArtistId">Redigera Artist</a>
+                            </div>
+                        </div>
+                        <div class="songDiv">
+                             <h4>Låtar</h4>
+                            <ol>
+                                @for (int j = 0; j < ViewBag.Songs.Count; j++)
+                                {
+                                    if (ViewBag.Songs[j].RecordId == Record.RecordId)
+                                    {
+                                        <li>@ViewBag.Songs[j].SongName</li>
+                                    }
+                                }
+                            </ol>
+                            <div class="btn">
+                                <a asp-area="" asp-controller="Song" asp-action="Index">Redigera Låtar</a>
+                            </div>
+                            @{bool Rent = false;}
+                            @for (int k = 0; k < ViewBag.Renting.Count; k++){
+                                if (ViewBag.Renting[k].RecordId == Record.RecordId){
+                                    for (int l = 0; l < ViewBag.Users.Count; l++){
+                                        if (ViewBag.Users[l].UserId == ViewBag.Renting[k].UserId){
+                                            <p class="rent-info">Skivan är utlånad till @ViewBag.Users[l].UserName från @ViewBag.Renting[k].Rented.ToString("d/MM/yyyy") klockan @ViewBag.Renting[k].Rented.ToString("H:mm").</p>
+                                            <div class="btn-div">
+                                                <div class="btn">
+                                                    <a asp-area="" asp-controller="Renting" asp-action="Details"
+                                                        asp-route-id="@ViewBag.Renting[k].RentingId">Redigera Uthyrningen</a>
+                                                </div>
+                                                <div class="btn">
+                                                    <a asp-area="" asp-controller="User" asp-action="Details"
+                                                        asp-route-id="@ViewBag.Users[l].UserId">Redigera Användaren</a>
+                                                </div>
+                                            </div>
+                                            Rent = true;
+                                        }
+                                    }
+                                }
+                            }
+                            @if(Rent== false){
+                                <div class="btn">
+                                    <a asp-area="" asp-controller="Renting" asp-action="Create" >Hyr skiva</a>
+                                </div>
+                            }
+
+                        </div>
+                        
+                    </article>
+                }
+            }
+        }
+    }
+</section>
+<section class="searchSection">
+    <h2>Sök efter CD eller Artist</h2>
+    <form asp-action="Search">
+        <label for="search">Sök</label>
+        <input type="text" id="search" name="search">
+        <input type="submit" value="Sök" class="btn">
+    </form>
+</section>
