@@ -16,7 +16,6 @@ namespace moment32.Models{
         [DisplayName("Skiva")]
         public int RecordId { get; set; }
 
-        [Required(ErrorMessage = "Ange rätt skiva")]
         [DisplayName("Skiva")]
         public Record? Record { get; set; }
     }

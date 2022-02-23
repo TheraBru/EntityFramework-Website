@@ -15,7 +15,6 @@ namespace moment32.Models{
         [DisplayName("Skiva")]
         public int RecordId { get; set; }
 
-        [Required(ErrorMessage = "Ange skivan")]
         [DisplayName("Skiva")]
         public Record? Record { get; set; }
 
@@ -23,7 +22,6 @@ namespace moment32.Models{
         [DisplayName("Användare")]
         public int UserId { get; set; }
 
-        [Required(ErrorMessage = "Ange namn på användaren")]
         [DisplayName("Användare")]
         public User? User { get; set; }
     }
